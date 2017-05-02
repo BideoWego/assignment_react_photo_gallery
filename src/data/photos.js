@@ -4242,4 +4242,32 @@ const instagramResponse = {
       }
     }
   ]
-}
+};
+
+
+const photos = instagramResponse.data.map((photo) => {
+  return {
+    imageUrl: photo.images.standard_resolution.url,
+    profileUrl: `http://instagram.com/${ photo.user.username }`,
+    pageUrl: photo.link,
+    username: photo.user.username,
+    fullName: photo.user.full_name,
+    tags: photo.tags,
+    filter: photo.filter,
+    createdAt: new Date(parseInt(photo.created_time, 10) * 1000).toDateString()
+  };
+});
+
+
+
+
+export default photos;
+
+
+
+
+
+
+
+
+
